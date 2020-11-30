@@ -1,6 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.4.20"
+    ext {
+        version_material = "1.1.0"
+        version_navigation = "1.0.0"
+        version_room = "2.2.1"
+        version_glide = "4.8.0"
+        version_lifecycle_extensions = "2.0.0"
+    }
     repositories {
         google()
         jcenter()
@@ -8,9 +15,19 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+    afterEvaluate {
+        if (project.plugins.hasPlugin("kotlin-kapt")) {
+            kapt {
+                javacOptions {
+                    // Increased so the big amount of databinding errors being printed don't cover all of the others
+                    // https://github.com/google/dagger#android-gradle
+                    option("-Xmaxerrs", 500)
+                }
+            }
+        }
     }
 }
 

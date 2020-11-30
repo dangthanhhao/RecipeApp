@@ -1,11 +1,14 @@
-package com.enclave.barry.recipeapp
+package com.enclave.barry.recipeapp.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.android.AndroidInjection
 
-class MainActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
+
 }
