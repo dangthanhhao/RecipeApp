@@ -1,11 +1,13 @@
 package com.enclave.barry.recipeapp.app.main.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.enclave.barry.recipeapp.R
 import com.enclave.barry.recipeapp.app.main.vm.MainViewModel
+import com.enclave.barry.recipeapp.app.recipeDetail.ui.RecipeDetailActivity
 import com.enclave.barry.recipeapp.base.BaseBindingActivity
 import com.enclave.barry.recipeapp.databinding.ActivityMainBinding
 import com.enclave.barry.recipeapp.util.ReadFilePermission
@@ -25,10 +27,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun setupButtons() {
         binding.fabAddRecipe.setOnClickListener {
-//            startActivity(
-//                Intent(this, RecipeDetailActivity::class.java).apply {
-//                    putExtra(RecipeDetailActivity.ADD_RECIPE_ACTION, true)
-//                })
+            startActivity(
+                Intent(this, RecipeDetailActivity::class.java).apply {
+                    putExtra(RecipeDetailActivity.ADD_RECIPE_ACTION, true)
+                })
         }
     }
 
@@ -61,11 +63,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun setupListRecipe() {
         listRecipesAdapter = RecipeAdapter(viewModel, onclick = {
-//            startActivity(
-//                Intent(this, RecipeDetailActivity::class.java).apply {
-//                    putExtra(RecipeDetailActivity.UPDATE_RECIPE_ACTION, true)
-//                    putExtra(RecipeDetailActivity.UPDATE_OBJECT_ID, it.id)
-//                })
+            startActivity(
+                Intent(this, RecipeDetailActivity::class.java).apply {
+                    putExtra(RecipeDetailActivity.UPDATE_RECIPE_ACTION, true)
+                    putExtra(RecipeDetailActivity.UPDATE_OBJECT_ID, it.id)
+                })
         })
         binding.listRecipes.adapter = listRecipesAdapter
         viewModel.listRecipes.observe(this, {

@@ -2,10 +2,9 @@ package com.enclave.barry.recipeapp.app.main.vm
 
 import com.enclave.barry.recipeapp.base.BaseViewModel
 import com.enclave.barry.recipeapp.data.local.SharedPrefs
-import com.enclave.barry.recipeapp.data.local.model.Ingredient
 import com.enclave.barry.recipeapp.data.local.model.Recipe
-import com.enclave.barry.recipeapp.data.local.model.Step
 import com.enclave.barry.recipeapp.data.local.repository.RecipeRepository
+import com.enclave.barry.recipeapp.data.sampleData.SampleData
 import io.reactivex.Completable
 import timber.log.Timber
 import javax.inject.Inject
@@ -41,29 +40,7 @@ class MainViewModel @Inject constructor(
         compositeDisposable.add(
             sharedPrefs.getIsFirstTimeRun().flatMapCompletable {
                 if (it) {
-                    val listRecipes = listOf(
-                        Recipe(
-                            null, "Recipe 1", null, "A sample of recipe", 1, listOf(
-                                Ingredient(1, "Meat: 300g", 1),
-                                Ingredient(2, "Salt: 1/2 cup", 2)
-                            ), listOf(
-                                Step(1, "Open the application", 1),
-                                Step(2, "Create some recipes", 2),
-                                Step(3, "Close application", 3)
-                            )
-                        ),
-                        Recipe(
-                            null, "Recipe 2", null, "A sample of recipe 2", 1, listOf(
-                                Ingredient(1, "Meat: 300g", 1),
-                                Ingredient(2, "Salt: 1/2 cup", 2)
-                            ), listOf(
-                                Step(1, "Open the application", 1),
-                                Step(2, "Create some recipes", 2),
-                                Step(3, "Close application", 3)
-                            )
-                        )
-                    )
-                    return@flatMapCompletable recipeRepository.insertListRecipes(listRecipes)
+                    return@flatMapCompletable recipeRepository.insertListRecipes(SampleData.getSampleData())
                         .andThen(sharedPrefs.setIsfirstTimeRun(false))
                 } else Completable.complete()
             }.subscribe({

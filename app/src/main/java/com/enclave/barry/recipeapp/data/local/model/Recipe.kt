@@ -10,7 +10,11 @@ data class Recipe(
     var name: String? = null,
     var img: String? = null,
     var description: String? = null,
-    var type: Int = 1,
+    var type: Int = DEFAULT_TYPE,
     var ingredients: List<Ingredient>? = mutableListOf(),
     var steps: List<Step>? = mutableListOf()
-)
+) {
+    companion object {
+        const val DEFAULT_TYPE = 1
+    }
+}

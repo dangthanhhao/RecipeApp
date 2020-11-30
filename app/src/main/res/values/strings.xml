@@ -5,4 +5,16 @@
     <string name="add_button">Add button</string>
     <string name="label_type">Type</string>
     <string name="img_desc_recipe">Image of recipe</string>
+    <string name="img_no_content_description">no content</string>
+    <string name="label_delete">delete</string>
+    <string name="title_new_recipe">New Recipe</string>
+    <string name="label_save">Save</string>
+    <string name="label_description">Description</string>
+    <string name="label_steps">Steps</string>
+    <string name="label_enter_step_here">Enter step here</string>
+    <string name="label_ingredients">Ingredients</string>
+    <string name="label_recipe_name">Recipe name</string>
+    <string name="label_enter_recipe_name">Enter recipe name</string>
+    <string name="label_recipe_description">Enter description</string>
+    <string name="hint_enter_ingredient_here">Enter ingredient here</string>
 </resources>
