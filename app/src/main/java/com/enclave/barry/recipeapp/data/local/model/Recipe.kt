@@ -10,7 +10,7 @@ data class Recipe(
     var name: String? = null,
     var img: String? = null,
     var description: String? = null,
-    var type: Int? = null,
+    var type: Int = 1,
     var ingredients: List<Ingredient>? = mutableListOf(),
     var steps: List<Step>? = mutableListOf()
 )

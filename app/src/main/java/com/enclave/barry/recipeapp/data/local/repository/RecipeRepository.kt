@@ -9,7 +9,8 @@ import io.reactivex.Single
 interface RecipeRepository {
     fun updateListTypes(): Completable
     fun getRecipeTypes(): LiveData<List<RecipeType>>
-    fun insertRecipe(recipes: Recipe): Completable
+    fun insertRecipe(recipe: Recipe): Completable
+    fun insertListRecipes(recipes: List<Recipe>): Completable
     fun updateRecipe(recipes: Recipe): Completable
     fun getRecipes(): LiveData<List<Recipe>>
     fun getRecipe(id: Int): Single<Recipe>

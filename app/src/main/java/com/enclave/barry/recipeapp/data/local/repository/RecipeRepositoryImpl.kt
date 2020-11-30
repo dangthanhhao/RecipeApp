@@ -33,8 +33,12 @@ class RecipeRepositoryImpl @Inject constructor(
         ).subscribeOnDataThread()
     }
 
-    override fun insertRecipe(recipes: Recipe): Completable {
-        return recipeDAO.insert(recipes).subscribeOnDataThread()
+    override fun insertRecipe(recipe: Recipe): Completable {
+        return recipeDAO.insert(recipe).subscribeOnDataThread()
+    }
+
+    override fun insertListRecipes(recipes: List<Recipe>): Completable {
+        return recipeDAO.insertList(recipes).subscribeOnDataThread()
     }
 
     override fun updateRecipe(recipes: Recipe): Completable {
