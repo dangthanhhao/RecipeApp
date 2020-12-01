@@ -11,10 +11,11 @@
     <string name="label_save">Save</string>
     <string name="label_description">Description</string>
     <string name="label_steps">Steps</string>
-    <string name="label_enter_step_here">Enter step here</string>
+    <string name="hint_enter_step_here">Enter step here</string>
     <string name="label_ingredients">Ingredients</string>
     <string name="label_recipe_name">Recipe name</string>
     <string name="label_enter_recipe_name">Enter recipe name</string>
     <string name="label_recipe_description">Enter description</string>
     <string name="hint_enter_ingredient_here">Enter ingredient here</string>
+    <string name="validate_empty_field">You must input here!</string>
 </resources>

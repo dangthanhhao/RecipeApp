@@ -131,21 +131,59 @@ class RecipeDetailActivity :
 
         })
     }
-
+    //onclick events and validate fields
     private fun setupButtons() {
         binding.imageRecipe.setOnClickListener {
             onShowImagePicker()
         }
+        binding.imgChangeImage.setOnClickListener {
+            onShowImagePicker()
+        }
         binding.btnSave.setOnClickListener {
-            viewModel.saveRecipe()
+            val recipeName = binding.edtRecipeName.text.toString().trim()
+            if (recipeName.isEmpty()) {
+                binding.edtRecipeName.apply {
+                    setText("")
+                    hint = getString(R.string.validate_empty_field)
+                    setHintTextColor(ContextCompat.getColor(context, R.color.invalidate_hint_text))
+                }
+            } else {
+                viewModel.saveRecipe()
+            }
         }
         binding.btnAddIngredient.setOnClickListener {
-            viewModel.addIngredient(binding.edtIngredient.text.toString())
-            binding.edtIngredient.text.clear()
+            val ingredient = binding.edtIngredient.text.toString().trim()
+            if (ingredient.isEmpty()) {
+                binding.edtIngredient.apply {
+                    setText("")
+                    hint = getString(R.string.validate_empty_field)
+                    setHintTextColor(ContextCompat.getColor(context, R.color.invalidate_hint_text))
+                }
+            } else {
+                binding.edtIngredient.apply {
+                    hint = getString(R.string.hint_enter_ingredient_here)
+                    setHintTextColor(ContextCompat.getColor(context, R.color.default_hint_text))
+                }
+                viewModel.addIngredient(ingredient)
+                binding.edtIngredient.text.clear()
+            }
         }
         binding.btnAddStep.setOnClickListener {
-            viewModel.addStep(binding.edtStep.text.toString())
-            binding.edtStep.text.clear()
+            val step = binding.edtStep.text.toString().trim()
+            if (step.isEmpty()) {
+                binding.edtStep.apply {
+                    setText("")
+                    hint = getString(R.string.validate_empty_field)
+                    setHintTextColor(ContextCompat.getColor(context, R.color.invalidate_hint_text))
+                }
+            } else {
+                binding.edtStep.apply {
+                    hint = getString(R.string.hint_enter_step_here)
+                    setHintTextColor(ContextCompat.getColor(context, R.color.default_hint_text))
+                }
+                viewModel.addStep(step)
+                binding.edtStep.text.clear()
+            }
         }
     }
 
