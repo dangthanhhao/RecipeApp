@@ -1,11 +1,14 @@
 package com.enclave.barry.recipeapp.app.recipeDetail.ui
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.enclave.barry.recipeapp.R
 import com.enclave.barry.recipeapp.data.local.model.Step
 import com.enclave.barry.recipeapp.databinding.ItemStepBinding
 
@@ -18,9 +21,30 @@ class StepAdapter constructor(val onDelete: (Step) -> Unit, val onUpdate: (Step)
             if (item != null) {
                 binding.model = item
                 binding.clickEvent = onDelete
+                //validate and realtime update
                 binding.edtContent.addTextChangedListener {
-                    item.content = it.toString()
-                    onUpdate.invoke(item)
+                    val step = it.toString().trim()
+                    if (step.isEmpty()) {
+                        binding.edtContent.apply {
+                            backgroundTintList = ColorStateList.valueOf(
+                                ContextCompat.getColor(
+                                    context,
+                                    R.color.invalidate_hint_bg
+                                )
+                            )
+                            hint = context.getString(R.string.validate_empty_field)
+                            setHintTextColor(
+                                ContextCompat.getColor(
+                                    context,
+                                    R.color.invalidate_hint_text
+                                )
+                            )
+                        }
+                    } else {
+                        item.content = it.toString()
+                        onUpdate.invoke(item)
+                    }
+
                 }
             }
 

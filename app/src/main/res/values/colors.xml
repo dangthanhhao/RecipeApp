@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="default_hint_text">#808080</color>
     <color name="invalidate_hint_text">#FF5E95</color>
+    <color name="invalidate_hint_bg">#FDC9DB</color>
     <color name="background_activity">#FAF0F0</color>
 </resources>
