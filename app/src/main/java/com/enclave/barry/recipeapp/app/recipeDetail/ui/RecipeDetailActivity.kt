@@ -38,7 +38,6 @@ class RecipeDetailActivity :
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        Timber.d("Activity created ${viewModel.currentRecipe.value.toString()}")
         binding.viewmodel = viewModel
         val isAddAction = intent.getBooleanExtra(ADD_RECIPE_ACTION, false)
         if (isAddAction) {
@@ -116,6 +115,7 @@ class RecipeDetailActivity :
         binding.listSteps.adapter = adapter
         viewModel.listSteps.observe(this, {
             adapter.submitList(it)
+            adapter.notifyDataSetChanged()
         })
     }
 
@@ -127,10 +127,12 @@ class RecipeDetailActivity :
         })
         binding.listIngredients.adapter = adapter
         viewModel.listIngredients.observe(this, {
+            Timber.w("List recieve $it")
             adapter.submitList(it)
-
+            adapter.notifyDataSetChanged()
         })
     }
+
     //onclick events and validate fields
     private fun setupButtons() {
         binding.imageRecipe.setOnClickListener {

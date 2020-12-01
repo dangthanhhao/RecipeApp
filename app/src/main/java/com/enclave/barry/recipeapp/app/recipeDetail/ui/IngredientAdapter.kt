@@ -16,7 +16,7 @@ class IngredientAdapter constructor(
     val onDelete: (Ingredient) -> Unit,
     val onUpdate: (Ingredient) -> Unit
 ) :
-    ListAdapter<Ingredient, IngredientAdapter.IngredientViewHolder>(StringDiffCallback) {
+    ListAdapter<Ingredient, IngredientAdapter.IngredientViewHolder>(IngredientDiffCallback) {
 
     class IngredientViewHolder(val binding: ItemIngredientBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -52,7 +52,6 @@ class IngredientAdapter constructor(
                         item.content = it.toString()
                         onUpdate.invoke(item)
                     }
-
                 }
             }
 
@@ -74,13 +73,13 @@ class IngredientAdapter constructor(
         holder.bind(getItem(position), onDelete, onUpdate)
     }
 
-    object StringDiffCallback : DiffUtil.ItemCallback<Ingredient>() {
+    object IngredientDiffCallback : DiffUtil.ItemCallback<Ingredient>() {
         override fun areItemsTheSame(oldItem: Ingredient, newItem: Ingredient): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Ingredient, newItem: Ingredient): Boolean {
-            return oldItem == newItem
+            return oldItem.content.equals(newItem.content) && oldItem.order == newItem.order
         }
     }
 }

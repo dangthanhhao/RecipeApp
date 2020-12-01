@@ -94,6 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:ellipsize="end"
+                    android:maxLines="3"
                     android:text="@{model.description}"
                     app:layout_constraintBottom_toBottomOf="@+id/imgRecipe"
                     app:layout_constraintEnd_toEndOf="@+id/txtName"
