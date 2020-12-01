@@ -18,4 +18,10 @@
     <string name="label_recipe_description">Enter description</string>
     <string name="hint_enter_ingredient_here">Enter ingredient here</string>
     <string name="validate_empty_field">You must input here!</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_login">Login</string>
+    <string name="mess_login_success">Login successfully</string>
+    <string name="mess_login_failed">Login failed</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
 </resources>

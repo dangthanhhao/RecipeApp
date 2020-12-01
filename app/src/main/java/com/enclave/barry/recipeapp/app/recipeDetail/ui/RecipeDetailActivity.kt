@@ -28,8 +28,8 @@ class RecipeDetailActivity :
 
     override val layoutId = R.layout.activity_recipe_detail
     override val viewModelClass = RecipeDetailViewModel::class
-    var avatarPicked = ""
-    var isUpdate = false
+    private var avatarPicked = ""
+    private var isUpdate = false
 
     companion object {
         const val ADD_RECIPE_ACTION = "add recipe"

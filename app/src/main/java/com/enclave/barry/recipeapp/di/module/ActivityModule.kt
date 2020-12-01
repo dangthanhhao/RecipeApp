@@ -1,5 +1,7 @@
 package com.enclave.barry.recipeapp.di.module
 
+import com.enclave.barry.recipeapp.app.login.di.LoginModule
+import com.enclave.barry.recipeapp.app.login.ui.LoginActivity
 import com.enclave.barry.recipeapp.app.main.di.MainModule
 import com.enclave.barry.recipeapp.app.main.ui.MainActivity
 import com.enclave.barry.recipeapp.app.recipeDetail.di.RecipeDetailModule
@@ -17,4 +19,8 @@ abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [RecipeDetailModule::class])
     abstract fun recipeDetail(): RecipeDetailActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [LoginModule::class])
+    abstract fun login(): LoginActivity
 }

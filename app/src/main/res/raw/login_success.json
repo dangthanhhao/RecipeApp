@@ -1,0 +1,8 @@
+{
+  "code": 200,
+  "message": "",
+  "data": {
+    "fullName": "Wan Shin",
+    "accessToken": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMyIsInVuaXF1ZV9uYW1lIjoic3R1ZGVudDAxIiwibmJmIjoxNjAzNzY0MTAyLCJleHAiOjE2MDM4NTA1MDIsImlhdCI6MTYwMzc2NDEwMn0.f-BDGkbwxXdlAxk8_yOHPKO9qjim9WsDz4QRwtVvLQzRMAHNfX-eKZ1AfD2sf8Bc1A1-9ASmNQEoAkLcbznNOw"
+  }
+}

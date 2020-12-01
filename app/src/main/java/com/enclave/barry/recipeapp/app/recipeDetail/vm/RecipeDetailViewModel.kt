@@ -9,7 +9,7 @@ import com.enclave.barry.recipeapp.data.local.repository.RecipeRepository
 import timber.log.Timber
 import javax.inject.Inject
 
-class RecipeDetailViewModel @Inject constructor(val recipeRepo: RecipeRepository) :
+class RecipeDetailViewModel @Inject constructor(private val recipeRepo: RecipeRepository) :
     BaseViewModel() {
 
     val listRecipeTypes = recipeRepo.getRecipeTypes()
@@ -48,26 +48,26 @@ class RecipeDetailViewModel @Inject constructor(val recipeRepo: RecipeRepository
         )
     }
 
-    fun updateIngredientOrder(ingredients: List<Ingredient>): List<Ingredient> {
-        if (ingredients.isNotEmpty()) {
+    private fun updateIngredientOrder(ingredients: List<Ingredient>): List<Ingredient> {
+        return if (ingredients.isNotEmpty()) {
             var startOrder = 1
-            return ingredients.map {
+            ingredients.map {
                 it.apply {
                     order = startOrder++
                 }
             }
-        } else return listOf()
+        } else listOf()
     }
 
-    fun updateStepOrder(steps: List<Step>): List<Step> {
-        if (steps.isNotEmpty()) {
+    private fun updateStepOrder(steps: List<Step>): List<Step> {
+        return if (steps.isNotEmpty()) {
             var startOrder = 1
-            return steps.map {
+            steps.map {
                 it.apply {
                     order = startOrder++
                 }
             }
-        } else return listOf()
+        } else listOf()
     }
 
     fun addIngredient(ingredientName: String) {

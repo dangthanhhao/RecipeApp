@@ -11,7 +11,6 @@ import com.enclave.barry.recipeapp.R
 import com.enclave.barry.recipeapp.app.main.vm.MainViewModel
 import com.enclave.barry.recipeapp.data.local.model.Recipe
 import com.enclave.barry.recipeapp.databinding.ItemRecipeBinding
-import timber.log.Timber
 
 class RecipeAdapter(val viewModel: MainViewModel, val onclick: (Recipe) -> Unit) :
     ListAdapter<Recipe, RecipeAdapter.ListRecipeViewHolder>(recipeDiffCallBack) {
@@ -40,7 +39,6 @@ class RecipeAdapter(val viewModel: MainViewModel, val onclick: (Recipe) -> Unit)
                     Glide.with(binding.root.context)
                         .load(ContextCompat.getDrawable(context, R.drawable.defaultfood))
                         .into(binding.imgRecipe)
-                    Timber.d("bind default img")
                 }
 
             }

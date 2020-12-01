@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.enclave.barry.recipeapp.R
+import com.enclave.barry.recipeapp.app.login.ui.LoginActivity
 import com.enclave.barry.recipeapp.app.main.vm.MainViewModel
 import com.enclave.barry.recipeapp.app.recipeDetail.ui.RecipeDetailActivity
 import com.enclave.barry.recipeapp.base.BaseBindingActivity
@@ -31,6 +32,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
                 Intent(this, RecipeDetailActivity::class.java).apply {
                     putExtra(RecipeDetailActivity.ADD_RECIPE_ACTION, true)
                 })
+        }
+        binding.btnLogin.setOnClickListener {
+            startActivity(
+                Intent(this, LoginActivity::class.java)
+            )
         }
     }
 
@@ -79,5 +85,4 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding, MainViewModel>() {
             )
         })
     }
-
 }

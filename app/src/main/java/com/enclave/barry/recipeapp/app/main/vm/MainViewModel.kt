@@ -1,5 +1,6 @@
 package com.enclave.barry.recipeapp.app.main.vm
 
+import androidx.lifecycle.MutableLiveData
 import com.enclave.barry.recipeapp.base.BaseViewModel
 import com.enclave.barry.recipeapp.data.local.SharedPrefs
 import com.enclave.barry.recipeapp.data.local.model.Recipe
@@ -11,7 +12,7 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     recipeRepository: RecipeRepository,
-    sharedPrefs: SharedPrefs
+    val sharedPrefs: SharedPrefs
 ) : BaseViewModel() {
     companion object {
         const val FILTER_ALL = "All types"
@@ -19,6 +20,7 @@ class MainViewModel @Inject constructor(
 
     val listRecipes = recipeRepository.getRecipes()
     val listRecipeTypes = recipeRepository.getRecipeTypes()
+    val isLogin = MutableLiveData<Boolean>()
 
     init {
         //sync xml and room for recipe types
@@ -69,4 +71,13 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun checkIslogin() {
+        compositeDisposable.add(sharedPrefs.getLoginStatus().subscribe(
+            {
+                isLogin.postValue(it)
+            }, {
+                it.printStackTrace()
+            }
+        ))
+    }
 }

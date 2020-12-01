@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeApp">
+        <activity android:name=".app.login.ui.LoginActivity"></activity>
         <activity
             android:name=".app.recipeDetail.ui.RecipeDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
